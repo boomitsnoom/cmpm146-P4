@@ -37,9 +37,9 @@ def setup_behavior_tree():
     mid_game_plan = Sequence(name='Mid Game Strategy')
     attack_production = Action(attack_highest_growth_enemy_planet)
     reinforce_modified = Action(modified_reinforce)
-    mid_game_plan.child_nodes = [attack_production,attack.copy(),reinforce_modified]
+    mid_game_plan.child_nodes = [attack_production,reinforce_modified,attack.copy()]
 
-    root.child_nodes = [early_game_plan,mid_game_plan]
+    root.child_nodes = [early_game_plan,mid_game_plan,attack.copy()]
 
     logging.info('\n' + root.tree_to_string())
     return root
