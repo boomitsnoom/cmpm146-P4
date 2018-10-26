@@ -175,19 +175,3 @@ def modified_reinforce(state):
             return issue_order(state, source.ID, target.ID, fleet_size)
 
     return False
-
-def marginal_reinforce(state):
-    weakest_planet = min(state.my_planets(), key=lambda t: t.num_ships, default=None)
-    #strongest_planet = max(state.my_planets(), key=lambda t: t.num_ships, default=None)
-    #nearest_planet = min(state.my_planets(), key=lambda t: state.distance(t, weakest_planet), default=None)
-    nearest_planet = None
-    nearest_distance = 9999999999999
-    for planet in state.my_planets():
-        distance = state.distance(planet.ID, weakest_planet.ID)
-        if distance < nearest_distance:
-            nearest_planet = planet
-            nearest_distance = distance
-
-    if any(fleet.destination_planet == weakest_planet.ID for fleet in state.my_fleets()):
-        return False
-    return issue_order(state, nearest_planet.ID, weakest_planet.ID, 2)

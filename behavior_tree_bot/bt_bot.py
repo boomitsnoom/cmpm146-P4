@@ -6,7 +6,7 @@
 // starting point, or you can throw it out entirely and replace it with your
 // own.
 """
-import logging, traceback, sys, os, inspect, time
+import logging, traceback, sys, os, inspect
 logging.basicConfig(filename=__file__[:-3] +'.log', filemode='w', level=logging.DEBUG)
 currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
 parentdir = os.path.dirname(currentdir)
@@ -25,13 +25,6 @@ def setup_behavior_tree():
     # Top-down construction of behavior tree
     root = Selector(name='High Level Ordering of Strategies')
 
-    """
-    screw_with_bots = Sequence(name='Mess With Bot Priorities')
-    is_weakest = Check(is_weakest_under_attack)
-    marginally_reinforce = Action(marginal_reinforce)
-    screw_with_bots.child_nodes = [is_weakest, marginally_reinforce]
-    """
-
     early_game_plan = Sequence(name='Early Game Strategy') #Offensive Plan
     neutral_planet_check = Check(if_neutral_planet_available)
     early_behaviors = Selector(name="Early Behaviors")
@@ -46,24 +39,14 @@ def setup_behavior_tree():
     reinforce_modified = Action(modified_reinforce)
     mid_game_plan.child_nodes = [attack_production,reinforce_modified,attack.copy()]
 
-<<<<<<< HEAD
-<<<<<<< HEAD
     root.child_nodes = [early_game_plan,mid_game_plan, attack.copy()]
-=======
-    root.child_nodes = [early_game_plan,mid_game_plan,attack.copy()]
->>>>>>> dbeee44... 4/5 done
-=======
-    root.child_nodes = [early_game_plan,mid_game_plan,attack.copy()]
->>>>>>> dbeee44... 4/5 done
 
     logging.info('\n' + root.tree_to_string())
     return root
 
 # You don't need to change this function
 def do_turn(state):
-    start_time = time.time()
-    while(time.time() - start_time < 0.5):
-        behavior_tree.execute(planet_wars)
+    behavior_tree.execute(planet_wars)
 
 if __name__ == '__main__':
     logging.basicConfig(filename=__file__[:-3] + '.log', filemode='w', level=logging.DEBUG)
