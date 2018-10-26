@@ -25,3 +25,7 @@ def if_neutral_planet_with_high_growth_2(state):
 def if_neutral_planet_with_high_growth_1(state):
 		return any(state.neutral_planets().growth_rate(1))
 
+def is_weakest_under_attack(state):
+    weakest_planet = min(state.my_planets(), key=lambda t: t.num_ships, default=None)
+    return any(fleet.destination_planet == weakest_planet.ID for fleet in state.enemy_fleets())
+
