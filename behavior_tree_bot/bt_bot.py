@@ -47,7 +47,11 @@ def setup_behavior_tree():
     mid_game_plan.child_nodes = [attack_production,reinforce_modified,attack.copy()]
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     root.child_nodes = [early_game_plan,mid_game_plan, attack.copy()]
+=======
+    root.child_nodes = [early_game_plan,mid_game_plan,attack.copy()]
+>>>>>>> dbeee44... 4/5 done
 =======
     root.child_nodes = [early_game_plan,mid_game_plan,attack.copy()]
 >>>>>>> dbeee44... 4/5 done

@@ -224,7 +224,11 @@ DEBUG:root:Finish turn
 DEBUG:root:Finish turn
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 DEBUG:root:Order:2 5 112.5
+=======
+DEBUG:root:Order:5 21 136.0
+>>>>>>> dbeee44... 4/5 done
 =======
 DEBUG:root:Order:5 21 136.0
 >>>>>>> dbeee44... 4/5 done
