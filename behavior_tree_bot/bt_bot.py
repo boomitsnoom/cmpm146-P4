@@ -39,11 +39,7 @@ def setup_behavior_tree():
     reinforce_modified = Action(modified_reinforce)
     mid_game_plan.child_nodes = [attack_production,reinforce_modified,attack.copy()]
 
-<<<<<<< HEAD
-    root.child_nodes = [early_game_plan,mid_game_plan,attack.copy()]
-=======
     root.child_nodes = [early_game_plan,mid_game_plan, attack.copy()]
->>>>>>> ad507e159704d05e5266cd306a9d833083d1457b
 
     logging.info('\n' + root.tree_to_string())
     return root
