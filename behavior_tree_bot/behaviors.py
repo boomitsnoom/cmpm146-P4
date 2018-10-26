@@ -36,6 +36,8 @@ def attack_weakest_enemy_planet(state):
             logging.info('I am here!')
             required_ships = best_ship.num_ships + state.distance(best_ship.ID,weakest_planet.ID)* weakest_planet.growth_rate + 1
             logging.info('I just calcualted required ships')
+            logging.info("required_ships < best_ship.num_ships ==",required_ships < best_ship.num_ships)
+            logging.info("not any(fleet.destination_planet == weakest_planet.ID for fleet in state.my_fleets())",not any(fleet.destination_planet == weakest_planet.ID for fleet in state.my_fleets()))
             if((required_ships < best_ship.num_ships) and (not any(fleet.destination_planet == weakest_planet.ID for fleet in state.my_fleets()))):
                 logging.info("in the if")
                 issue_order(state,best_ship.ID,weakest_planet.ID,required_ships)
