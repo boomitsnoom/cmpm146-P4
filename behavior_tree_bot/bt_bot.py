@@ -31,7 +31,8 @@ def setup_behavior_tree():
     spread = Action(spread_to_weakest_neutral_planet)
     attack = Action(attack_weakest_enemy_planet)
     reinforce = Action(reinforce_weak_planet)
-    early_game_plan.child_nodes = [spread,attack,reinforce]
+    early_game_plan.child_nodes = [neutral_planet_check,early_behaviors]
+    early_behaviors.child_nodes = [spread,attack,reinforce]
 
     mid_game_plan = Sequence(name='Mid Game Strategy')
     attack_production = Action(attack_highest_growth_enemy_planet)
