@@ -7,34 +7,43 @@ import logging
 def attack_weakest_enemy_planet(state):
    
     #Find the 5 closest planets to the weakest planet
-
+    logging.info('######### I am here!')
     planets = state.my_planets()
-
+    logging.info('######## I am here!')
     while planets != None:
-        # (2) Find my strongest planet.
+        # (2) Find my strongest planet.3`````
         strongest_planet = max(state.my_planets(), key=lambda t: t.num_ships, default=None)
+        logging.info('#######I am here!')
 
         # (3) Find the weakest enemy planet.
         weakest_planet = min(state.enemy_planets(), key=lambda t: t.num_ships, default=None)
-
+        logging.info('###### I am here!')
 
         neighbors = {}
-
+        logging.info('##### I am here!')
 
         for planet in planets:
             neighbors[planet] = state.distance(planet.ID,weakest_planet.ID)
+            logging.info('##### I am here!')
 
         neighbors = sorted(neighbors, key=lambda k: k[1])
-
+        logging.info('### I am here!')
         stop = min(5,len(neighbors))
-
+        logging.info('## I am here!')
         for x in range(0,stop):
-            target = neighbors[x]
-            required_ships = target.num_ships + state.distance(neighbors[x].ID,weakest_planet.ID)* weakest_planet.growth_rate + 1
-            if((required_ships < strongest_planet.num_ships) and (not any(fleet.destination_planet == target.ID for fleet in state.my_fleets()))):
-                issue_order(state,target.ID,weakest_planet.ID,required_ships)
+            logging.info('# I am here!')
+            best_ship = neighbors[x]
+            logging.info('I am here!')
+            required_ships = best_ship.num_ships + state.distance(best_ship.ID,weakest_planet.ID)* weakest_planet.growth_rate + 1
+            logging.info('I just calcualted required ships')
+            if((required_ships < best_ship.num_ships) and (not any(fleet.destination_planet == weakest_planet.ID for fleet in state.my_fleets()))):
+                logging.info("in the if")
+                issue_order(state,best_ship.ID,weakest_planet.ID,required_ships)
+                logging.info("issued an order")
+                planets.remove(best_ship)
+                logging.info("Almost done")
                 return True
-        planets.remove(strongest_planet)
+        
     return False
 
 
