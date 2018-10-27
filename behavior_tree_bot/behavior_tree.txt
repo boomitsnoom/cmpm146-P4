@@ -1,0 +1,13 @@
+INFO:root:
+Selector: High Level Ordering of Strategies
+| Sequence: Early Game Strategy
+| | Check: if_neutral_planet_available
+| | Selector: Early Behaviors
+| | | Action: spread_to_weakest_neutral_planet
+| | | Action: attack_weakest_enemy_planet
+| | | Action: reinforce_weak_planet
+| Sequence: Mid Game Strategy
+| | Action: attack_highest_growth_enemy_planet
+| | Action: modified_reinforce
+| | Action: attack_weakest_enemy_planet
+| Action: attack_weakest_enemy_planet
